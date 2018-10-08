@@ -37,7 +37,7 @@ namespace WatchApp.Core.ApplicationServices.Services
 
         public Watches FindWatchesById(int id)
         {
-            return _watchRepository.ReadyById(id);
+            return _watchRepository.ReadById(id);
         }
 
         public Watches FindWatchesByIdIncludOwners(int id)
@@ -52,7 +52,7 @@ namespace WatchApp.Core.ApplicationServices.Services
                 .ToList();
         }
 
-        public List<Watches> GetFilteredPets(Filter filter)
+        public List<Watches> GetFilteredWatches(Filter filter)
         {
             if (filter.CurrentPage < 0 || filter.ItemsPerPage < 0)
             {

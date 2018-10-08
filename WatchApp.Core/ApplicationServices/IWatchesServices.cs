@@ -23,6 +23,6 @@ namespace WatchApp.Core.ApplicationServices
 
         Watches UpdateWatch(Watches watchUpdate);
 
-        List<Watches> GetFilteredPets(Filter filter);
+        List<Watches> GetFilteredWatches(Filter filter);
     }
 }
