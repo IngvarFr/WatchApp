@@ -4,8 +4,7 @@ using System.Text;
 
 namespace WatchApp.Infrastructure.Data
 {
-    public class WatchesRepository
+    class WatchesRepository
     {
-
     }
 }
