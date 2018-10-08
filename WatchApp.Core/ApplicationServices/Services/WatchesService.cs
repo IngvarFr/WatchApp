@@ -1,12 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using WatchApp.Core.DomainServices;
 using WatchApp.Core.Entity;
 
 namespace WatchApp.Core.ApplicationServices.Services
 {
     public class WatchesService : IWatchesServices
     {
+        readonly IWatchesRepository _watchRepository;
+
+        public WatchesService(IWatchesRepository watchRepository)
+        {
+            _watchRepository = watchRepository;
+        }
+
         public Watches AddPet(Watches pet)
         {
             throw new NotImplementedException();
@@ -28,6 +36,11 @@ namespace WatchApp.Core.ApplicationServices.Services
         }
 
         public List<Watches> FindWatchesType()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Watches> GetFilteredPets(Filter filter)
         {
             throw new NotImplementedException();
         }

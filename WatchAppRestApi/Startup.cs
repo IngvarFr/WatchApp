@@ -15,9 +15,24 @@ namespace WatchAppRestApi
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        /*public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+        }*/
+
+        private IConfiguration _conf { get; }
+
+        private IHostingEnvironment _env { get; set; }
+
+        public Startup(IHostingEnvironment env)
+        {
+            _env = env;
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddEnvironmentVariables();
+            _conf = builder.Build();
         }
 
         public IConfiguration Configuration { get; }
