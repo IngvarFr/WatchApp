@@ -6,10 +6,17 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using WatchApp.Core.ApplicationServices;
+using WatchApp.Core.ApplicationServices.Services;
+using WatchApp.Core.DomainServices;
+using WatchApp.Infrastructure.Data;
 
 namespace WatchAppRestApi
 {
@@ -40,6 +47,28 @@ namespace WatchAppRestApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            if (_env.IsDevelopment())
+            {
+                services.AddDbContext<WatchAppDbContext>(
+                    opt => opt.UseSqlite("Data Source=WatchShopApp.db"));
+            }
+            else if (_env.IsProduction())
+            {
+                services.AddDbContext<WatchAppDbContext>(
+                    opt => opt
+                        .UseSqlServer(_conf.GetConnectionString("defaultConnection")));
+            }
+
+            services.AddScoped<IWatchesRepository, WatchesRepository>();
+            services.AddScoped<IWatchesServices, WatchesService>();
+
+            services.AddMvc().AddJsonOptions(options =>
+            {
+                options.SerializerSettings.ContractResolver =
+                new CamelCasePropertyNamesContractResolver();
+                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

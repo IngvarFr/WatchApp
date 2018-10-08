@@ -5,7 +5,7 @@ using WatchApp.Core.Entity;
 
 namespace WatchApp.Core.ApplicationServices
 {
-    interface IWatchesServices
+    public interface IWatchesServices
     {
         List<Watches> GetWatches();
 
