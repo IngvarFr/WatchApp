@@ -25,6 +25,6 @@ namespace WatchApp.Core.ApplicationServices
 
         Watches UpdateWatch(Watches petUpdate);
 
-        //List<Watches> GetFilteredPets(Filter filter);
+        List<Watches> GetFilteredPets(Filter filter);
     }
 }
