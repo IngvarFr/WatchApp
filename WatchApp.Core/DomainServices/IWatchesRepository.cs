@@ -5,7 +5,7 @@ using WatchApp.Core.Entity;
 
 namespace WatchApp.Core.DomainServices
 {
-    interface IWatchesRepository
+    public interface IWatchesRepository
     {
         IEnumerable<Watches> ReadPets(Filter filter = null);
 
