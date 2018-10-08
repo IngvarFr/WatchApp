@@ -4,7 +4,7 @@ using System.Text;
 
 namespace WatchApp.Core.Entity
 {
-    class Watches
+    public class Watches
     {
     }
 }
