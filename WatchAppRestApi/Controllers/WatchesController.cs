@@ -49,16 +49,21 @@ namespace WatchAppRestApi.Controllers
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public Watches Put(int id, [FromBody] Watches watches)
         {
-
+            var entity = _watchService.UpdateWatch(watches);
+            entity.ProductName = watches.ProductName;
+            entity.ProductDescription = watches.ProductDescription;
+            entity.Price = watches.Price;
+            entity.ProductPicture = watches.ProductPicture;
+            return entity;
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-
+            _watchService.DeleteWatch(id);
         }
     }
 }

@@ -10,15 +10,14 @@ namespace WatchApp.Infrastructure.Data
         public static void SeedDB(WatchAppDbContext ctx)
         {
             ctx.Database.EnsureCreated();
-            var watch1 = ctx.Watches.Add(new Watches()
+            /*var watch1 = ctx.Watches.Add(new Watches()
             {
                 ProductName = "Rolex",
                 ProductDescription ="Expensive as shizzle",
                 Stock = 2,
                 Price = 500,
                 ProductPicture = "wow.jpeg"
-            }).Entity;
-
+            }).Entity;*/
             ctx.SaveChanges();
         }
     }
