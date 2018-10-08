@@ -8,7 +8,7 @@ namespace WatchAppRestApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class WatchesController : ControllerBase
     {
         // GET api/values
         [HttpGet]
