@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28010.2003
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WatchApp.Core", "WatchApp.Core\WatchApp.Core.csproj", "{7591E690-92A9-499C-9167-A5C29FA804DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WatchAppRestApi", "WatchAppRestApi\WatchAppRestApi.csproj", "{670EB498-96ED-40B2-8211-921BB12547F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WatchAppRestApi", "WatchAppRestApi\WatchAppRestApi.csproj", "{670EB498-96ED-40B2-8211-921BB12547F4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{953D656A-9FEC-4539-B5B3-B59DCBC8E963}"
 EndProject
@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infastructure", "Infastruct
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{7192DF91-4FF3-48FF-B00D-05788174709F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WatchApp.Core.Entity", "WatchApp.Core.Entity\WatchApp.Core.Entity.csproj", "{BCF99A32-1B2E-42E7-8892-B74C10C2A943}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WatchApp.Core.Entity", "WatchApp.Core.Entity\WatchApp.Core.Entity.csproj", "{BCF99A32-1B2E-42E7-8892-B74C10C2A943}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

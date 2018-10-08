@@ -6,5 +6,6 @@ namespace WatchApp.Infrastructure.Data
 {
     public class WatchesRepository
     {
+
     }
 }
