@@ -7,17 +7,15 @@ namespace WatchApp.Core.DomainServices
 {
     public interface IWatchesRepository
     {
-        IEnumerable<Watches> ReadPets(Filter filter = null);
+        IEnumerable<Watches> ReadWatches(Filter filter = null);
 
-        Watches CreatePet(Watches watches);
+        Watches CreateWatch(Watches watches);
 
         void DeleteWatch(int id);
 
-        Watches ReadyById(int id);
+        Watches ReadById(int id);
 
         Watches Update(Watches watchesUpdate);
-
-        Watches FindWatchesByIdIncludeOwners(int id);
 
         int Count();
     }
