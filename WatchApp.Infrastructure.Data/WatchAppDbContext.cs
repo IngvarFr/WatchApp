@@ -11,6 +11,8 @@ namespace WatchApp.Infrastructure.Data
         public DbSet<Watches> Watches { get; set; }
 
         public WatchAppDbContext(DbContextOptions<WatchAppDbContext> opt): base(opt)
-        { }
+        {
+
+        }
     }
 }

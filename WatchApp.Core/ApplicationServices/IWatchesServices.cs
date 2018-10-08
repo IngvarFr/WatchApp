@@ -7,11 +7,9 @@ namespace WatchApp.Core.ApplicationServices
 {
     interface IWatchesServices
     {
-        Watches GetWatchesInstance();
-
         List<Watches> GetWatches();
 
-        Watches AddPet(Watches pet);
+        Watches AddWatch(Watches watches);
 
         void DeleteWatch(int id);
 
@@ -23,7 +21,7 @@ namespace WatchApp.Core.ApplicationServices
 
         Watches FindWatchesByIdIncludOwners(int id);
 
-        Watches UpdateWatch(Watches petUpdate);
+        Watches UpdateWatch(Watches watchUpdate);
 
         List<Watches> GetFilteredPets(Filter filter);
     }
