@@ -49,14 +49,14 @@ namespace WatchAppRestApi.Controllers
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public Watches Put(int id, [FromBody] Watches watches)
+        public ActionResult<Watches> Put(int id, [FromBody] Watches watches)
         {
-            var entity = _watchService.UpdateWatch(watches);
-            entity.ProductName = watches.ProductName;
-            entity.ProductDescription = watches.ProductDescription;
-            entity.Price = watches.Price;
-            entity.ProductPicture = watches.ProductPicture;
-            return entity;
+            if (id < 1 || id != watches.Id)
+            {
+                return BadRequest("Parameter Id and order ID must be the same");
+            }
+
+            return Ok(_watchService.UpdateWatch(watches));
         }
 
         // DELETE api/values/5
