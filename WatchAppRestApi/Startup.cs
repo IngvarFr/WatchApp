@@ -50,7 +50,7 @@ namespace WatchAppRestApi
             if (_env.IsDevelopment())
             {
                 services.AddDbContext<WatchAppDbContext>(
-                    opt => opt.UseSqlite("Data Source=WatchShopApp.db"));
+                    opt => opt.UseSqlite("Data Source=WatchAppStore.db"));
             }
             else if (_env.IsProduction())
             {
@@ -78,9 +78,19 @@ namespace WatchAppRestApi
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                using (var scope = app.ApplicationServices.CreateScope())
+                {
+                    var ctx = scope.ServiceProvider.GetService<WatchAppDbContext>();
+                    DBInitializier.SeedDB(ctx);
+                }
             }
             else
             {
+                using (var scope = app.ApplicationServices.CreateScope())
+                {
+                    var ctx = scope.ServiceProvider.GetService<WatchAppDbContext>();
+                    ctx.Database.EnsureCreated();
+                }
                 app.UseHsts();
             }
 
