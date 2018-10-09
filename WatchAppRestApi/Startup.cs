@@ -27,10 +27,6 @@ namespace WatchAppRestApi
             Configuration = configuration;
         }*/
 
-        private IConfiguration _conf { get; }
-
-        private IHostingEnvironment _env { get; set; }
-
         public Startup(IHostingEnvironment env)
         {
             _env = env;
@@ -39,9 +35,10 @@ namespace WatchAppRestApi
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
-            _conf = builder.Build();
+            Configuration = builder.Build();
         }
 
+        private IHostingEnvironment _env { get; set; }
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -56,7 +53,7 @@ namespace WatchAppRestApi
             {
                 services.AddDbContext<WatchAppDbContext>(
                     opt => opt
-                        .UseSqlServer(_conf.GetConnectionString("defaultConnection")));
+                        .UseSqlServer(Configuration.GetConnectionString("watchAppConnection")));
             }
 
             services.AddScoped<IWatchesRepository, WatchesRepository>();
