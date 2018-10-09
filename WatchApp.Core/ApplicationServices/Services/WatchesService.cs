@@ -37,7 +37,7 @@ namespace WatchApp.Core.ApplicationServices.Services
 
         public Watches FindWatchesById(int id)
         {
-            return _watchRepository.ReadyById(id);
+            return _watchRepository.ReadById(id);
         }
 
         public Watches FindWatchesByIdIncludOwners(int id)
