@@ -13,7 +13,7 @@ namespace WatchApp.Core.ApplicationServices
 
         void DeleteWatch(int id);
 
-        List<Watches> SorWatchesByPrice();
+        List<Watches> SortWatchesByPrice();
 
         List<Watches> FindWatchesType();
 

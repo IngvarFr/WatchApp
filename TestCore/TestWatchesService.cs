@@ -5,6 +5,7 @@ using Moq;
 using WatchApp.Core.ApplicationServices.Services;
 using WatchApp.Core.Entity;
 using System;
+using System.IO;
 
 namespace TestCore
 {
@@ -35,7 +36,19 @@ namespace TestCore
         [Fact]
         public void TestFilterInvalidData()
         {
+            var watchRepo = new Mock<IWatchesRepository>();
+            IWatchesServices service = new WatchesService(watchRepo.Object);
+            Exception ex = Assert.Throws<InvalidDataException>(() => service.GetFilteredWatches(new Filter() { CurrentPage = 0, ItemsPerPage = 0 }));
+            Assert.Equal("Current page and Items per page must be above zero", ex.Message);
+        }
 
+        [Fact]
+        public void TestFilterOutOfBounds()
+        {
+            var watchRepo = new Mock<IWatchesRepository>();
+            IWatchesServices service = new WatchesService(watchRepo.Object);
+            Exception ex = Assert.Throws<InvalidDataException>(() => service.GetFilteredWatches(new Filter() { CurrentPage = 10, ItemsPerPage = 10 }));
+            Assert.Equal("Index out of bounds, Curret page is too high", ex.Message);
         }
     }
 }
