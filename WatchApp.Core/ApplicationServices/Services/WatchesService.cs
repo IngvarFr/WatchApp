@@ -54,9 +54,9 @@ namespace WatchApp.Core.ApplicationServices.Services
 
         public List<Watches> GetFilteredWatches(Filter filter)
         {
-            if (filter.CurrentPage < 0 || filter.ItemsPerPage < 0)
+            if (filter.CurrentPage <= 0 || filter.ItemsPerPage <= 0)
             {
-                throw new InvalidDataException("Current page and Items page must be zero or more");
+                throw new InvalidDataException("Current page and Items per page must be above zero");
             }
             if ((filter.CurrentPage - 1 * filter.ItemsPerPage) >= _watchRepository.Count())
             {
@@ -70,7 +70,7 @@ namespace WatchApp.Core.ApplicationServices.Services
             return _watchRepository.ReadWatches().ToList();
         }
 
-        public List<Watches> SorWatchesByPrice()
+        public List<Watches> SortWatchesByPrice()
         {
             throw new NotImplementedException();
         }
