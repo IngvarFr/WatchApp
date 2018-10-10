@@ -44,6 +44,8 @@ namespace WatchAppRestApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
+
             if (_env.IsDevelopment())
             {
                 services.AddDbContext<WatchAppDbContext>(
@@ -90,8 +92,8 @@ namespace WatchAppRestApi
                 }
                 app.UseHsts();
             }
-
-            app.UseHttpsRedirection();
+            app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            //app.UseHttpsRedirection();
             app.UseMvc();
         }
     }
